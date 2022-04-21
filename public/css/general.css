@@ -1,0 +1,32 @@
+body {
+    background-color: lightskyblue;
+}
+
+.container {
+    background-color: white;
+    padding: 1.5rem;
+    font-size: large;
+}
+
+.navbar {
+    background-color: #40b5fe;
+    font-size: larger;
+    padding: 0;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: white;
+    text-decoration: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+
+.btn-primary {
+    background-color: #40b5fe;
+    border-color: #40b5fe;
+}
+
+form {
+    display: inline-block;
+}

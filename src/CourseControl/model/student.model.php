@@ -3,6 +3,11 @@
 /**
  * This is the object class for the Student entity
  */
+
+namespace CourseControl\Model;
+
+use Stringable;
+
 class Student implements Stringable
 {
     private string $firstname;
