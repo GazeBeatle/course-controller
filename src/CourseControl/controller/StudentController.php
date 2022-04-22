@@ -101,14 +101,12 @@ class StudentController
             
         } else {
             StudentDAO::editStudent($id, $student);
-            header('Location: student.php');
         }
     }
     
     public function doStudentDelete($id)
     {
         if (StudentDAO::deleteStudent($id)) {
-            header('Location: students');
             return StudentController::showStudentOverview();
         }
     }

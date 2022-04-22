@@ -8,8 +8,15 @@ class ErrorController
 {
     public function exception(FlattenException $exception)
     {
-        $msg = 'Something went wrong! ('.$exception->getMessage().')';
+        global $twig;
 
-        return $msg.' '.$exception->getStatusCode();
+        $errorcode = $exception->getStatusCode();
+        $errormsg = $exception->getMessage();
+      
+        return $twig->render('error.view.php', [
+            'title' => 'Error '.$errorcode,
+            'errorcode' => $errorcode,
+            'errormsg' => $errormsg
+        ]);
     }
 }
