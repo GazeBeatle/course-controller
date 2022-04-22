@@ -1,6 +1,6 @@
 <?php
 
-namespace CourseControl\Controller;
+namespace CourseControl\controller;
 
 use Symfony\Component\ErrorHandler\Exception\FlattenException;
 

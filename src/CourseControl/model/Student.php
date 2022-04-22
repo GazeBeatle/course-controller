@@ -4,7 +4,7 @@
  * This is the object class for the Student entity
  */
 
-namespace CourseControl\Model;
+namespace CourseControl\model;
 
 use Stringable;
 

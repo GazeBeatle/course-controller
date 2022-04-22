@@ -1,6 +1,6 @@
 <?php
 
-namespace CourseControl\Controller;
+namespace CourseControl\controller;
 
 require_once './../include/init.inc.php';
 
@@ -10,7 +10,7 @@ class HomeController
     {
         global $twig;
         
-        return $twig->render('index.view.php', [
+        return $twig->render('home.view.php', [
             'title' => 'Home'
         ]);
     }
