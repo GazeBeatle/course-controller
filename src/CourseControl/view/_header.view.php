@@ -16,6 +16,9 @@
                     <li class="nav-item">
                         <a href="/home" class="nav-link">Home</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/students" class="nav-link">Students</a>
+                    </li>
                 </ul>
             </header>
         </div>

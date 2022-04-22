@@ -15,12 +15,12 @@
             <tr>
                 <td>{{ student.firstname }} {{ student.lastname }}</td>
                 <td>{{ student.email }}</td>
-                <!-- <td><a href="/student/details/{{ student.studentid }}">Details</a></td> -->
+                <td><a href="/students/details/{{ student.studentid }}">Details</a></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <!-- <a href="/student/new" class="btn btn-primary">New student</a> -->
+    <a href="/students/new" class="btn btn-primary">New student</a>
 
 {{ include('/_footer.view.php') }}

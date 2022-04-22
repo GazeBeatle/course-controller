@@ -22,4 +22,16 @@ $routes->add('studentDetails', new Routing\Route('/students/details/{id}', [
     '_controller' => 'CourseControl\controller\StudentController::showStudentDetails'
 ]));
 
+// Student Form page
+$routes->add('studentNew', new Routing\Route('/students/new', [
+    '_controller' => 'CourseControl\controller\StudentController::showStudentForm'
+]));
+$routes->add('studentEdit', new Routing\Route('/students/edit/{id}', [
+    '_controller' => 'CourseControl\controller\StudentController::showStudentEditForm'
+]));
+$routes->add('studentDelete', new Routing\Route('/students/delete/{id}', [
+    '_controller' => 'CourseControl\controller\StudentController::doStudentDelete'
+]));
+
+
 return $routes;
