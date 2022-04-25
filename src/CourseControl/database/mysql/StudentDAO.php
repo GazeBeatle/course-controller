@@ -8,24 +8,24 @@ class StudentDAO
 {
     public static function getAllStudents()
     {
-        global $pdo;
+        global $conn;
 
         $query = "SELECT studentid, firstname, lastname, email 
                 FROM student;";
 
-        return $pdo->query($query)->fetchAll();
+        return $conn->query($query)->fetchAll();
     }
 
     public static function getStudentById(int $id)
     {
-        global $pdo;
+        global $conn;
 
         $query = "SELECT studentid, firstname, lastname, email 
                 FROM student 
                 WHERE studentid = :id 
                 LIMIT 1;";
 
-        $stmt = $pdo->prepare($query);
+        $stmt = $conn->prepare($query);
 
         $stmt->bindValue(':id', $id);
         $stmt->execute();
@@ -35,7 +35,7 @@ class StudentDAO
 
     public static function addNewStudent($student)
     {
-        global $pdo;
+        global $conn;
 
         $firstname = $student['firstname'];
         $lastname = $student['lastname'];
@@ -44,7 +44,7 @@ class StudentDAO
         $query = "INSERT INTO student(firstname, lastname, email) 
                 VALUES (:firstname, :lastname, :email);";
 
-        $stmt = $pdo->prepare($query);
+        $stmt = $conn->prepare($query);
 
         $stmt->bindValue(':firstname', $firstname);
         $stmt->bindValue(':lastname', $lastname);
@@ -55,7 +55,7 @@ class StudentDAO
 
     public static function editStudent(int $id, $student)
     {
-        global $pdo;
+        global $conn;
 
         $firstname = $student['firstname'];
         $lastname = $student['lastname'];
@@ -68,7 +68,7 @@ class StudentDAO
                 WHERE studentid = :id 
                 LIMIT 1;";
         
-        $stmt = $pdo->prepare($query);
+        $stmt = $conn->prepare($query);
 
         $stmt->bindValue(':firstname', $firstname);
         $stmt->bindValue(':lastname', $lastname);
@@ -80,13 +80,13 @@ class StudentDAO
 
     public static function deleteStudent(int $id)
     {
-        global $pdo;
+        global $conn;
         
         $query = "DELETE FROM student 
                 WHERE studentid = :id 
                 LIMIT 1;";
         
-        $stmt = $pdo->prepare($query);
+        $stmt = $conn->prepare($query);
 
         $stmt->bindValue(':id', $id);
 
