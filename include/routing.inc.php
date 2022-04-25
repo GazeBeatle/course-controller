@@ -12,6 +12,8 @@ $routes->add('home', new Routing\Route('/home', [
     '_controller' => 'CourseControl\controller\HomeController::showHomepage'
 ]));
 
+
+// Student Pages
 // Student Overview page
 $routes->add('studentOverview', new Routing\Route('/students', [
     '_controller' => 'CourseControl\controller\StudentController::showStudentOverview'
@@ -32,6 +34,15 @@ $routes->add('studentEdit', new Routing\Route('/students/edit/{id}', [
 $routes->add('studentDelete', new Routing\Route('/students/delete/{id}', [
     '_controller' => 'CourseControl\controller\StudentController::doStudentDelete'
 ]));
+
+
+// Course Pages
+// Course Overview page
+$routes->add('courseOverview', new Routing\Route('/courses', [
+    '_controller' => 'CourseControl\controller\CourseController::showCourseOverview'
+]));
+
+
 
 
 return $routes;

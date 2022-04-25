@@ -15,7 +15,7 @@
             <tr>
                 <td>{{ student.firstname }} {{ student.lastname }}</td>
                 <td>{{ student.email }}</td>
-                <td><a href="/students/details/{{ student.studentid }}">Details</a></td>
+                <td><a href="/students/details/{{ student.id }}">Details</a></td>
             </tr>
         {% endfor %}
         </tbody>

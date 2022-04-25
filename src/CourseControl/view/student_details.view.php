@@ -21,9 +21,9 @@
     </table>
 
     <div class="d-flex justify-content-between" style="max-width: 15rem;">
-        <a href="/students/delete/{{ info.studentid }}" class="btn btn-secondary">Delete</a>
+        <a href="/students/delete/{{ info.id }}" class="btn btn-secondary">Delete</a>
         <br>
-        <a href="/students/edit/{{ info.studentid }}" class="btn btn-primary">Edit</a>
+        <a href="/students/edit/{{ info.id }}" class="btn btn-primary">Edit</a>
         {% endfor %}
     </div>
 

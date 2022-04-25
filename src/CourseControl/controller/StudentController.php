@@ -5,7 +5,6 @@ namespace CourseControl\controller;
 require_once './../include/init.inc.php';
 
 use CourseControl\database\mysql\StudentDAO;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class StudentController
 {
@@ -64,9 +63,12 @@ class StudentController
     {
         global $twig;
 
+        $student['email']     = $_POST['email']     ?? '';
+        $student['password']  = $_POST['password']  ?? '';
         $student['firstname'] = $_POST['firstname'] ?? '';
         $student['lastname']  = $_POST['lastname']  ?? '';
-        $student['email']     = $_POST['email']     ?? '';
+        $student['birthdate'] = $_POST['birthdate'] ?? '';
+
         
         $errors = StudentDAO::validateStudent($student);
 
@@ -85,10 +87,12 @@ class StudentController
     {
         global $twig;
     
+        $id                   = $_POST['id']        ?? '';
+        $student['email']     = $_POST['email']     ?? '';
+        $student['password']  = $_POST['password']  ?? '';
         $student['firstname'] = $_POST['firstname'] ?? '';
         $student['lastname']  = $_POST['lastname']  ?? '';
-        $student['email']     = $_POST['email']     ?? '';
-        $id                   = $_POST['id']        ?? '';
+        $student['birthdate'] = $_POST['birthdate'] ?? '';
     
         $errors = StudentDAO::validateStudent($student);
     

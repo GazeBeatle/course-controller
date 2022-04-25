@@ -5,7 +5,7 @@
     <form class="form needs-validation my-4" method="post" action="" enctype="multipart/form-data" novalidate>
         {% for info in studentById %}
             <input name="csrf" type="hidden" value="{{ csrf }}">
-            <input type="hidden" name="id" value="{{ info.studentid }}">
+            <input type="hidden" name="id" value="{{ info.id }}">
             <label class="form-label" for="firstname">Firstname:*</label>
             <input class="form-control" type="text" name="firstname" id="firstname" value="{{ info.firstname }}" required>
             <br>
@@ -16,7 +16,7 @@
             <input class="form-control" type="text" name="email" id="email" value="{{ info.email }}" required>
             <br>
             <div class="d-flex justify-content-between" style="max-width: 15rem;">
-                <a href="/students/details/{{ info.studentid }}" class="btn btn-secondary">Cancel</a>
+                <a href="/students/details/{{ info.id }}" class="btn btn-secondary">Cancel</a>
                 <br>
                 <input class="btn btn-primary" type="submit" value="Save">
             </div>

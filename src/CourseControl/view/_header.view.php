@@ -19,6 +19,9 @@
                     <li class="nav-item">
                         <a href="/students" class="nav-link">Students</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/courses" class="nav-link">Courses</a>
+                    </li>
                 </ul>
             </header>
         </div>

@@ -2,16 +2,14 @@
 
 namespace CourseControl\database\mysql;
 
-use CourseControl\model\Student;
-
 class StudentDAO
 {
     public static function getAllStudents()
     {
         global $conn;
 
-        $query = "SELECT studentid, firstname, lastname, email 
-                FROM student;";
+        $query = "SELECT id, email, firstname, lastname, birthdate  
+                FROM CCUser;";
 
         return $conn->query($query)->fetchAll();
     }
@@ -20,9 +18,9 @@ class StudentDAO
     {
         global $conn;
 
-        $query = "SELECT studentid, firstname, lastname, email 
-                FROM student 
-                WHERE studentid = :id 
+        $query = "SELECT id, email, firstname, lastname, birthdate  
+                FROM CCUser 
+                WHERE id = :id 
                 LIMIT 1;";
 
         $stmt = $conn->prepare($query);
@@ -37,18 +35,22 @@ class StudentDAO
     {
         global $conn;
 
+        $email = $student['email'];
+        $password = $student['password'];
         $firstname = $student['firstname'];
         $lastname = $student['lastname'];
-        $email = $student['email'];
+        $birthdate = $student['birthdate'];
 
-        $query = "INSERT INTO student(firstname, lastname, email) 
-                VALUES (:firstname, :lastname, :email);";
+        $query = "INSERT INTO CCUser(email, password, firstname, lastname, birthdate) 
+                VALUES (:email, :password, :firstname, :lastname, :birthdate);";
 
         $stmt = $conn->prepare($query);
 
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':password', $password);
         $stmt->bindValue(':firstname', $firstname);
         $stmt->bindValue(':lastname', $lastname);
-        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':birthdate', $birthdate);
 
         return $stmt->execute();
     }
@@ -57,23 +59,28 @@ class StudentDAO
     {
         global $conn;
 
+        $email = $student['email'];
+        $password = $student['password'];
         $firstname = $student['firstname'];
         $lastname = $student['lastname'];
-        $email = $student['email'];
+        $birthdate = $student['birthdate'];
 
-        $query = "UPDATE student 
-                SET firstname = :firstname, 
+        $query = "UPDATE CCUser 
+                SET email = :email, 
+                    password = :password, 
+                    firstname = :firstname, 
                     lastname = :lastname, 
-                    email = :email 
-                WHERE studentid = :id 
+                WHERE id = :id 
                 LIMIT 1;";
         
         $stmt = $conn->prepare($query);
 
+        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':password', $password);
         $stmt->bindValue(':firstname', $firstname);
         $stmt->bindValue(':lastname', $lastname);
-        $stmt->bindValue(':email', $email);
-        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':birthdate', $birthdate);
 
         return $stmt->execute();
     }
@@ -82,8 +89,8 @@ class StudentDAO
     {
         global $conn;
         
-        $query = "DELETE FROM student 
-                WHERE studentid = :id 
+        $query = "DELETE FROM CCUser 
+                WHERE id = :id 
                 LIMIT 1;";
         
         $stmt = $conn->prepare($query);
@@ -96,7 +103,7 @@ class StudentDAO
     public static function validateStudent($student) 
     {
         $errors = [];
-        $fields = ['firstname', 'lastname', 'email'];
+        $fields = ['email', 'password', 'firstname', 'lastname', 'birthdate'];
 
         foreach ($fields as $field) {
             if (empty($student[$field])) {
@@ -110,5 +117,4 @@ class StudentDAO
 
         return $errors;
     }
-
 }
